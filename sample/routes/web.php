@@ -22,3 +22,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/friends','FriendController@index')->middleware('auth');
+
+Route::get('/put-data',function(){
+    session()->put(['email'=>'user@example.com']);
+    return session()->get('email');
+});
+
+Route::get('/list-data',function(){
+    return session()->all();
+});
